@@ -1,0 +1,26 @@
+<div class='col-sm-4 col-sm-offset-4'>
+    {{#each burgers}}
+    {{#unless this.devoured}}
+        <h3>
+            <ul class="list-unstyled">
+                <li class='not-devoured'>
+                    <form action='/{{this.id}}?_method=PUT' method='POST'>
+                        <button type='input' class='btn btn-xs btn-danger' id={{this.id}}>Devour it!</button> {{this.id}}. {{this.burger_name}} 
+                    </form>
+                </li>
+            </ul>
+    </h3>
+    {{/unless}}
+    {{/each}}
+</div>
+<div class='col-sm-4'>
+    {{#each burgers}}
+    {{#if this.devoured}}
+        <h3>
+            <ul class="list-unstyled">
+                <li class='devoured'> {{this.id}}. {{this.burger_name}} </li>
+            </ul>
+        </h3>
+    {{/if}}
+    {{/each}}
+</div>
