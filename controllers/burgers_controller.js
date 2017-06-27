@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const burgers = require('../models/burger.js');
 
-
-
 router.get('/', (req, res) => {
     burgers.findAll()
         .then((result) => {
@@ -37,5 +35,6 @@ router.put('/:id', (req, res) => {
             res.redirect('/');
         });
 });
+
 //exports to server.js
 module.exports = router;

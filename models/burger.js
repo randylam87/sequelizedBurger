@@ -18,16 +18,18 @@ const Burger = connection.define('burgers', {
     }
 });
 
-Burger.sync({ force: true })
-    .then(()=> Burger.create({
+Burger.sync({
+        force: true
+    })
+    .then(() => Burger.create({
         burgerName: 'Big Mac'
     }))
-    .then(()=> Burger.create({
+    .then(() => Burger.create({
         burgerName: 'Krabby Patty'
     }))
-    .then(()=> Burger.create({
+    .then(() => Burger.create({
         burgerName: 'Whopper'
     }));
-    
+
 
 module.exports = Burger;

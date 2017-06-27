@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 1337;
 const app = express();
 const sequelize = require('sequelize');
 const bodyParser = require('body-parser');
+
 app.use(bodyParser.json());
 app.use(bodyParser.text({
     type: 'text/html'
@@ -19,12 +20,12 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-
 app.engine('handlebars', exphbs({
     defaultLayout: 'main'
 }));
 
 app.set('view engine', 'handlebars');
+
 app.use("/", routes);
 
 app.listen(PORT, () => {

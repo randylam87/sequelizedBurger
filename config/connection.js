@@ -1,6 +1,5 @@
-// const mysql = require('mysql');
 const Sequelize = require('sequelize');
-const connection = new Sequelize('burgers_db', 'root', 'root', {
+let connection = new Sequelize('burgers_db', 'root', 'root', {
   host: 'localhost',
   dialect: 'mysql',
   pool: {
@@ -11,9 +10,9 @@ const connection = new Sequelize('burgers_db', 'root', 'root', {
   port: 8889
 });
 
-// if (process.env.JAWSDB_URL) {
-//     connection = mysql.createConnection(process.env.JAWSDB_URL)
-// }
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL)
+} else {
 connection
     .authenticate()
     .then(() => {
@@ -22,5 +21,5 @@ connection
     .catch(err => {
         console.error('Unable to connect to the database:', err);
     });
-
+}
 module.exports = connection;
