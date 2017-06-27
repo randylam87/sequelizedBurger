@@ -3,12 +3,11 @@ const router = express.Router();
 const burgers = require('../models/burger.js');
 
 router.get('/',(req,res)=>{
-    burgers.all((data)=>{
-        let burgersObject = {
-            burgers: data
-        };
-        res.render('index',burgersObject);
-    });
+    burgers.findAll()
+        .then((result)=>{
+            console.log(result);
+            res.render('index', { burger: result })
+        });
 });
 
 router.post('/',(req,res)=>{
