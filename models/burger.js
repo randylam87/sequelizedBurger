@@ -12,6 +12,10 @@ const Burger = connection.define('burgers', {
         type: Sequelize.BOOLEAN,
         default: 0
     },
+    devouredBy: {
+        type: Sequelize.STRING,
+        default: null
+    },
     date: {
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW

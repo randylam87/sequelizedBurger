@@ -16,3 +16,8 @@ body {
     color: lightgray;
     text-decoration: line-through;
 }
+
+.devouredBy {
+    color: black;
+    border-radius: 10px;
+}

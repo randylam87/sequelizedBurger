@@ -24,8 +24,10 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     let burgerId = req.params.id;
+    let burgerDevourer = req.body.devouredBy;
     burgers.update({
-            devoured: true
+            devoured: true,
+            devouredBy: burgerDevourer
         }, {
             where: {
                 id: burgerId
