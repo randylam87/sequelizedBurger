@@ -2,28 +2,40 @@ const express = require('express');
 const router = express.Router();
 const burgers = require('../models/burger.js');
 
-router.get('/',(req,res)=>{
+
+
+router.get('/', (req, res) => {
     burgers.findAll()
-        .then((result)=>{
-            console.log(result);
-            res.render('index', { burger: result })
+        .then((result) => {
+            let burgerObject = {
+                burgers: result
+            };
+            res.render('index', burgerObject);
         });
 });
 
-router.post('/',(req,res)=>{
+router.post('/', (req, res) => {
     let burger = req.body.burger;
-    burgers.add(burger,(data)=>{
-        // console.log(data);
-        res.redirect('/');
-    });
+    burgers.create({
+            burgerName: burger
+        })
+        .then(() => {
+            res.redirect('/');
+        });
 });
 
-router.put('/:id',(req,res)=>{
-    let id = req.params.id;
-    burgers.devour(id,(data)=>{
-        // console.log(data);
-        res.redirect('/');
-    });
-})
+router.put('/:id', (req, res) => {
+    let burgerId = req.params.id;
+    burgers.update({
+            devoured: true
+        }, {
+            where: {
+                id: burgerId
+            }
+        })
+        .then(() => {
+            res.redirect('/');
+        });
+});
 //exports to server.js
 module.exports = router;

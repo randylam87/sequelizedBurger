@@ -5,7 +5,7 @@
             <ul class="list-unstyled">
                 <li class='not-devoured'>
                     <form action='/{{this.id}}?_method=PUT' method='POST'>
-                        <button type='input' class='btn btn-xs btn-danger' id={{this.id}}>Devour it!</button> {{this.id}}. {{this.burger_name}} 
+                        <button type='input' class='btn btn-xs btn-danger' id={{this.id}}>Devour it!</button> {{this.id}}. {{this.burgerName}} 
                     </form>
                 </li>
             </ul>
@@ -18,7 +18,7 @@
     {{#if this.devoured}}
         <h3>
             <ul class="list-unstyled">
-                <li class='devoured'> {{this.id}}. {{this.burger_name}} </li>
+                <li class='devoured'> {{this.id}}. {{this.burgerName}} </li>
             </ul>
         </h3>
     {{/if}}
