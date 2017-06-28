@@ -10,8 +10,8 @@ let connection = new Sequelize('burgers_db', 'root', 'root', {
     port: 8889
 });
 
-if (process.env.JAWSDB_URL) {
-    connection = new Sequelize({use_env_variable: JAWSDB_URL, dialect: 'mysql' })
+if (use_env_variable) {
+  var sequelize = new Sequelize(process.env[ { use_env_variable: JAWSDB_URL, dialect : 'mysql' }]);
 } else {
     connection
         .authenticate()
