@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+let config    = require('./config.json')[env];
 let connection = new Sequelize('burgers_db', 'root', 'root', {
     host: 'localhost',
     dialect: 'mysql',
@@ -10,8 +11,8 @@ let connection = new Sequelize('burgers_db', 'root', 'root', {
     port: 8889
 });
 
-if (use_env_variable) {
-  var sequelize = new Sequelize(process.env[ { use_env_variable: JAWSDB_URL, dialect : 'mysql' }]);
+if (config.use_env_variable) {
+  var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
     connection
         .authenticate()
