@@ -13,7 +13,7 @@ let connection = new Sequelize('burgers_db', 'root', 'root', {
 if (process.env.JAWSDB_URL) {
     // connection = mysql.createConnection(process.env.JAWSDB_URL);
     connection = new Sequelize('hzrmqlqne32j7f4y', 'lsamhov467ikz38w', 'f6gj6em9uyqweo9m', {
-        host: process.env.JAWSDB_URL,
+        host: 'jj820qt5lpu6krut.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
         dialect: 'mysql',
         pool: {
             max: 5,
