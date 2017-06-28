@@ -12,7 +12,7 @@ let connection = new Sequelize('burgers_db', 'root', 'root', {
 
 if (process.env.JAWSDB_URL) {
     // connection = mysql.createConnection(process.env.JAWSDB_URL);
-    connection = new Sequelize(process.env.JAWSDB_URL)
+    connection = new Sequelize(process.env.JAWSDB_URL, 'lsamhov467ikz38w', 'f6gj6em9uyqweo9m' )
 } else {
     connection
         .authenticate()
