@@ -11,7 +11,7 @@ let connection = new Sequelize('burgers_db', 'root', 'root', {
 });
 
 if (process.env.JAWSDB_URL) {
-    connection = new Sequelize({ 'process.env' : JAWSDB_URL, 'dialect': 'mysql' })
+    connection = new Sequelize({use_env_variable: JAWSDB_URL, dialect: 'mysql' })
 } else {
     connection
         .authenticate()
