@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const burgers = require('../models/burger.js');
+let express = require("express");
+let router = express.Router();
+let db = require("../models");
 
 router.get('/', (req, res) => {
-    burgers.findAll()
+    db.Burger.findAll()
         .then((result) => {
             let burgerObject = {
                 burgers: result
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     let burger = req.body.burger;
-    burgers.create({
+    db.Burger.create({
             burgerName: burger
         })
         .then(() => {
@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
     let burgerId = req.params.id;
     let burgerDevourer = req.body.devouredBy;
-    burgers.update({
+    db.Burger.update({
             devoured: true,
             devouredBy: burgerDevourer
         }, {

@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 1337;
 const app = express();
 const sequelize = require('sequelize');
 const bodyParser = require('body-parser');
+const db = require("./models");
 
 app.use(bodyParser.json());
 app.use(bodyParser.text({
@@ -28,6 +29,8 @@ app.set('view engine', 'handlebars');
 
 app.use("/", routes);
 
-app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`);
-}); 
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+});
