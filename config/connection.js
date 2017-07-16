@@ -12,7 +12,7 @@ let connection = new Sequelize('burgers_db', 'root', 'root', {
 });
 
 if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+  var connection = new Sequelize(process.env[config.use_env_variable]);
 } else {
     connection
         .authenticate()
