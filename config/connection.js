@@ -1,6 +1,11 @@
 const Sequelize = require('sequelize');
 let config    = require('./config.json')[env];
-let connection = new Sequelize('burgers_db', 'root', 'root', {
+
+
+if (config.use_env_variable) {
+  let connection = new Sequelize(process.env[config.use_env_variable]);
+} else {
+    let connection = new Sequelize('burgers_db', 'root', 'root', {
     host: 'localhost',
     dialect: 'mysql',
     pool: {
@@ -10,17 +15,12 @@ let connection = new Sequelize('burgers_db', 'root', 'root', {
     },
     port: 8889
 });
+    }
+connection.authenticate().then(() => {
+    console.log('Connection has been established successfully.');
+})
+.catch(err => {
+    console.error('Unable to connect to the database:', err);
+});
 
-if (config.use_env_variable) {
-  var connection = new Sequelize(process.env[config.use_env_variable]);
-} else {
-    connection
-        .authenticate()
-        .then(() => {
-            console.log('Connection has been established successfully.');
-        })
-        .catch(err => {
-            console.error('Unable to connect to the database:', err);
-        });
-}
 module.exports = connection;
